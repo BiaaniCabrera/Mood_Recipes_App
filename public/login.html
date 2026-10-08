@@ -25,68 +25,8 @@
   </head>
   <body class="min-h-screen bg-white text-black">
     <div class="grid min-h-screen md:grid-cols-2">
-      <section class="relative flex min-h-[42vh] items-center justify-center overflow-hidden lg:min-h-screen" style="background: #f7c6d8">
-        <svg
-          class="h-[88%] w-[88%] max-h-[680px] max-w-[540px]"
-          viewBox="0 0 500 640"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true"
-        >
-          <circle cx="108" cy="78" r="12" stroke="#111" stroke-width="3" />
-          <circle cx="70" cy="168" r="10" fill="#111" />
-          <circle cx="38" cy="430" r="8" fill="#111" />
-          <circle cx="92" cy="560" r="12" stroke="#111" stroke-width="3" />
-          <rect x="228" y="96" width="15" height="15" fill="#111" transform="rotate(20 235 103)" />
-          <rect x="300" y="158" width="12" height="12" fill="#111" transform="rotate(30 306 164)" />
-          <rect x="390" y="548" width="12" height="12" fill="#111" transform="rotate(18 396 554)" />
-          <path d="M198 58 L214 74 L198 90 L182 74 Z" stroke="#111" stroke-width="3" />
-          <path d="M400 568 L416 584 L400 600 L384 584 Z" stroke="#111" stroke-width="3" />
-          <path d="M78 64 L98 48" stroke="#111" stroke-width="3" stroke-linecap="round" />
-          <path d="M332 62 L342 40" stroke="#111" stroke-width="3" stroke-linecap="round" />
-          <path d="M418 148 L448 148" stroke="#111" stroke-width="3" stroke-linecap="round" />
-          <path d="M48 508 L74 526" stroke="#111" stroke-width="3" stroke-linecap="round" />
-          <path d="M30 590 L64 590" stroke="#111" stroke-width="3" stroke-linecap="round" />
-
-          <line x1="70" y1="430" x2="430" y2="430" stroke="#111" stroke-width="3" />
-
-          <path
-            d="M148 430 C146 392 176 368 214 372 C238 374 252 386 250 404 C248 386 270 374 294 372 C340 366 374 394 374 430 C352 442 320 450 250 446 C180 450 154 442 148 430 Z"
-            fill="#f7c6d8"
-            stroke="#111"
-            stroke-width="3"
-            stroke-linejoin="round"
-          />
-          <path d="M166 408 C174 386 196 376 214 388 C224 394 222 408 212 414 C194 400 174 402 166 408 Z" fill="#111" />
-          <path d="M316 412 C334 390 362 394 374 412 C358 426 336 428 316 412 Z" fill="#111" />
-          <path d="M154 428 C146 436 140 430 146 424" stroke="#111" stroke-width="3" stroke-linecap="round" />
-          <path d="M364 430 C376 438 384 432 378 424" stroke="#111" stroke-width="3" stroke-linecap="round" />
-
-          <path
-            d="M196 250 C188 214 204 176 244 164 C286 152 328 176 336 220 C346 272 340 340 318 392 C296 428 208 432 192 384 C180 350 208 292 196 250 Z"
-            fill="#111"
-          />
-          <path d="M196 286 C154 274 122 246 126 216 C130 192 160 190 176 210 C168 236 186 262 196 286 Z" fill="#111" />
-          <path d="M328 278 C372 258 408 228 404 196 C400 170 370 172 352 194 C366 224 348 256 328 278 Z" fill="#111" />
-
-          <circle cx="124" cy="208" r="18" fill="#f7c6d8" stroke="#111" stroke-width="3" />
-          <circle cx="406" cy="188" r="18" fill="#f7c6d8" stroke="#111" stroke-width="3" />
-          <circle cx="114" cy="198" r="3.2" fill="#111" />
-          <circle cx="132" cy="214" r="3.2" fill="#111" />
-          <circle cx="118" cy="218" r="3.2" fill="#111" />
-          <circle cx="396" cy="178" r="3.2" fill="#111" />
-          <circle cx="416" cy="194" r="3.2" fill="#111" />
-          <circle cx="398" cy="198" r="3.2" fill="#111" />
-
-          <path
-            d="M188 96 C148 112 132 168 158 214 C172 240 204 246 228 224 C186 214 172 168 198 128 C232 88 292 96 348 154 C376 190 408 188 438 150 C402 214 344 248 286 226 C338 206 368 148 328 108 C296 76 236 70 188 96 Z"
-            fill="#111"
-          />
-          <ellipse cx="258" cy="168" rx="48" ry="54" fill="#f7c6d8" />
-          <path d="M228 160 Q238 154 250 160" stroke="#111" stroke-width="3" stroke-linecap="round" />
-          <path d="M278 158 Q290 152 302 160" stroke="#111" stroke-width="3" stroke-linecap="round" />
-          <path d="M256 188 Q268 198 282 188" stroke="#111" stroke-width="3" stroke-linecap="round" />
-        </svg>
+      <section class="relative flex min-h-[42vh] items-center justify-center overflow-hidden lg:min-h-screen" style="background: #FAF5EE">
+        <div id="cooking-animation" class="h-[88%] w-[88%] max-h-[640px] max-w-[540px] flex items-center justify-center" aria-label="Cooking animation"></div>
       </section>
 
       <section class="relative flex items-center justify-center px-8 py-16 sm:px-16">
@@ -102,7 +42,7 @@
 
         <form id="login-form" class="w-full max-w-sm" action="/app" method="get">
           <h1 class="serif text-center text-4xl font-semibold leading-tight sm:text-5xl">Hello!</h1>
-          <p class="serif mt-2 text-center text-2xl font-medium sm:text-3xl">Ready to cook in your mood?</p>
+          <p class="serif mt-2 text-center text-2xl font-medium sm:text-3xl">Let's cook what you're feeling.</p>
 
           <label class="mt-10 block text-sm text-neutral-700" for="email">Email</label>
           <input
@@ -152,7 +92,19 @@
       </section>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
     <script>
+      const animContainer = document.getElementById("cooking-animation");
+      if (animContainer && window.lottie) {
+        lottie.loadAnimation({
+          container: animContainer,
+          renderer: "svg",
+          loop: true,
+          autoplay: true,
+          path: "/cooking.json"
+        });
+      }
+
       const password = document.getElementById("password");
       const toggle = document.getElementById("toggle-password");
       toggle.addEventListener("click", () => {

@@ -2,3 +2,72 @@ button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+.recipe-deck {
+  display: grid;
+  gap: 0.5rem;
+  height: 600px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  transition: grid-template-columns 500ms ease-out, grid-template-rows 500ms ease-out;
+}
+
+@media (min-width: 768px) {
+  .recipe-deck {
+    height: 500px;
+  }
+}
+
+.recipe-card-item {
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+}
+
+.collapsed-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  margin: 0;
+  padding: 0.75rem;
+  overflow: hidden;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.25;
+  text-align: center;
+  color: #1c1917;
+  transition: opacity 300ms ease-out;
+}
+
+@media (min-width: 768px) {
+  .collapsed-title {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+}
+
+.recipe-card-item.is-active .collapsed-title {
+  opacity: 0;
+}
+
+.expanded-body {
+  position: absolute;
+  inset: 0;
+  overflow: auto;
+  padding: 1.25rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms ease-out;
+}
+
+.recipe-card-item.is-active .expanded-body {
+  opacity: 1;
+  pointer-events: auto;
+}

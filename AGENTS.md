@@ -22,27 +22,28 @@ Keep new pages as static HTML in `public/` unless there is a strong reason not t
 - APIs stay small JSON endpoints. No accounts unless requested.
 - If you change seed recipes, mood names, or schema, **migrate the existing database** on startup. Seed only runs when `recipes` is empty; an old `data/recipes.db` will not pick up `SEED_RECIPES` edits by itself. Follow the existing cozy → nostalgic `UPDATE` pattern.
 - Restart the Node process after `server.js` changes so the running app matches the files.
-- After UI work, check the flow in the browser (login, mood, recipe, another, save).
+- After UI work, check the flow in the browser (login, mood, expanding recipe cards, save, profile).
+- Mood browsing is an expanding card row of every recipe for that mood, not a single random card plus Another recipe. Profile in the top right opens saved recipes.
 
 ## Visual language
 
-- **Login:** baby pink `#f7c6d8`, Playfair Display headings, Source Sans form, black pill Login button, split illustration + form.
-- **Recipe app:** stone/amber Tailwind look, DM Sans, centered card, large mood buttons.
+- **Login:** warm cream `#FAF5EE` illustration panel with looping Lottie cooking animation (`cooking.json`), Playfair Display headings, Source Sans form, black pill Login button, split animation + form.
+- **Recipe app:** stone/amber Tailwind look, DM Sans, expanding recipe cards, large mood buttons, top-right Profile control.
 
 Match the screen you are on. Do not restyle the whole app unless asked.
 
-## Live art (original illustrations)
+## Live art & animations
 
-Use **live art** when a screen needs a custom illustration (hero, empty-state drawing, decorative figure), especially when the user supplies a mockup or screenshot.
+Use **live art or vector animations (like Lottie)** when a screen needs custom visuals (hero, empty-state drawing, decorative figure).
 
 Rules:
 
-- Draw **original** SVG or CSS in the repo (as on `public/login.html`). Recreate composition (pose, split layout, confetti) without pasting stock files or screenshot bitmaps.
-- Change colors and copy as specified (example: yellow mockup → baby pink; new greeting text).
+- Use original SVG/CSS or vector Lottie JSON in the repo (such as `public/cooking.json` on `public/login.html`).
+- Change colors and copy as specified (example: warm cream `#FAF5EE` background matching the animation palette).
 - Do **not** hotlink random images or drop unlicensed stock into `public/`.
 - **Emoji is enough** for mood buttons and small labels. Do not illustrate those.
-- Keep figures simple: flat fills, black outlines, background color showing through as “skin.”
-- Prefer inline SVG in the HTML for one-off art. Extract a file under `public/` only if several pages share it.
+- Keep figures simple and clean.
+- Prefer inline SVG in the HTML for one-off art or local Lottie JSON assets served statically. Extract a file under `public/` only if several pages share it or if using animation JSON.
 
 ## When adding features
 

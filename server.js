@@ -267,6 +267,14 @@ app.get("/api/recipes", (req, res) => {
     return res.status(400).json({ error: "Unknown mood. Use one of: " + MOODS.map((m) => m.id).join(", ") });
   }
 
+  if (req.query.all === "1") {
+    const recipes = db.prepare("SELECT * FROM recipes WHERE mood = ? ORDER BY id").all(mood);
+    if (!recipes.length) {
+      return res.status(404).json({ error: "No recipes found for that mood." });
+    }
+    return res.json(recipes.map(withSavedFlag));
+  }
+
   const exclude = String(req.query.exclude || "")
     .split(",")
     .map((id) => Number.parseInt(id, 10))

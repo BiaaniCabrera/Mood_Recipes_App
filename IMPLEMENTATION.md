@@ -7,9 +7,8 @@ This document describes the app as it exists today. For how to change it in late
 A small prototype that:
 
 1. Shows a login screen (no real accounts).
-2. Lets the user pick a mood and get a random matching recipe.
-3. Lets them request another recipe for the same mood.
-4. Lets them save recipes and reopen the saved list later.
+2. Lets the user pick a mood and browse every matching recipe in an expanding card row.
+3. Lets them save recipes and reopen them from a Profile control.
 
 ## Stack
 
@@ -28,6 +27,7 @@ A small prototype that:
   data/recipes.db        Created on first start (gitignored)
   public/
     login.html           Login page (site entry)
+    cooking.json         Lottie animation asset for login page
     index.html           Recipe app shell
     app.js               Recipe UI logic
     styles.css           Tiny extras Tailwind does not cover
@@ -87,6 +87,7 @@ Registered in `server.js`. `GET /` and `GET /app` are registered **before** `exp
 | GET | `/` | `public/login.html` |
 | GET | `/app` | `public/index.html` (recipe app) |
 | GET | `/api/moods` | Mood list JSON |
+| GET | `/api/recipes?mood=&all=1` | Every recipe for that mood, ordered by id, each with `saved: true/false`. Unknown mood → 400. Empty mood → 404. |
 | GET | `/api/recipes?mood=&exclude=` | One random recipe for that mood. `exclude` is a comma-separated list of ids already shown. If the pool is exhausted, it wraps and picks any recipe for that mood. Adds `saved: true/false`. Unknown mood → 400. |
 | GET | `/api/saved` | Saved recipes, newest first, each with `saved: true` |
 | POST | `/api/saved` | Body `{ "recipeId": number }`. Inserts or ignores. Returns the recipe with `saved`. |
@@ -99,22 +100,22 @@ JSON body parsing is enabled (`express.json()`).
 
 ### Login (`public/login.html`)
 
-Split layout: baby pink (`#f7c6d8`) illustration panel and a white form. Original SVG of a sitting figure (not a stock image). Copy:
+Split layout: warm cream (`#FAF5EE`) illustration panel playing a looping vector cooking animation (`cooking.json` rendered via `lottie-web`) and a white form. Copy:
 
 - Hello!
-- Ready to cook in your mood?
+- Let's cook what you're feeling.
 
 Fields: email, password with show/hide. **Login** requires both fields, then goes to `/app` with **no password check**. **Forget Password?** is a visual link only.
 
 ### Recipe app (`public/index.html` + `public/app.js`)
 
+A **Profile** button stays fixed at the top right. It opens the saved list. There is no name or email on that screen.
+
 Views:
 
 1. **Mood grid** — buttons from `/api/moods`.
-2. **Recipe card** — title, mood, time, description, ingredients, steps. **Save** / **Saved** toggle, **Another recipe**, **Change mood**.
-3. **Saved list** — from `/api/saved`. Empty copy if none. Click a row to open that recipe with **Back to saved**. Header **Saved** is always available.
-
-`seenIds` in client state is sent as `exclude` so “another recipe” avoids repeats until the mood’s recipes are used up.
+2. **Expanding recipe row** — every recipe for the chosen mood from `/api/recipes?mood=&all=1`. The first card starts open. Hover, focus, or click widens that card and shrinks the others. The open card shows title, time, description, ingredients, steps, and **Save** / **Saved**. **Change mood** sits under the row.
+3. **Saved recipes** — from `/api/saved`, titled Saved recipes. Empty copy if none. Click a row to open that one recipe (not the whole mood row) with **Back to profile**.
 
 ## What was not built
 
