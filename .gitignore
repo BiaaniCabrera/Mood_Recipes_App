@@ -1,0 +1,4 @@
+node_modules/
+data/recipes.db
+data/*.db
+.DS_Store

@@ -1,0 +1,13 @@
+{
+  "name": "mood-recipe-app",
+  "version": "1.0.0",
+  "description": "Simple mood-based recipe recommendations",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.8.1",
+    "express": "^4.21.2"
+  }
+}
